@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище praktika1_datasetModelContainer" CdmEntityContainer="praktika1_datasetEntities">
+    <EntitySetMapping Name="CLIENTS">
+      <EntityTypeMapping TypeName="praktika1_datasetModel.CLIENTS">
+        <MappingFragment StoreEntitySet="CLIENTS">
+          <ScalarProperty Name="ID_CLIENTS" ColumnName="ID_CLIENTS" />
+          <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+          <ScalarProperty Name="MIDDLENAME" ColumnName="MIDDLENAME" />
+          <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INFOBARS">
+      <EntityTypeMapping TypeName="praktika1_datasetModel.INFOBARS">
+        <MappingFragment StoreEntitySet="INFOBARS">
+          <ScalarProperty Name="ID_INFOBARS" ColumnName="ID_INFOBARS" />
+          <ScalarProperty Name="SUSHIBARS_ID" ColumnName="SUSHIBARS_ID" />
+          <ScalarProperty Name="SUSHISETS_ID" ColumnName="SUSHISETS_ID" />
+          <ScalarProperty Name="CLIENTS_ID" ColumnName="CLIENTS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUSHIBARS">
+      <EntityTypeMapping TypeName="praktika1_datasetModel.SUSHIBARS">
+        <MappingFragment StoreEntitySet="SUSHIBARS">
+          <ScalarProperty Name="ID_SUSHIBARS" ColumnName="ID_SUSHIBARS" />
+          <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+          <ScalarProperty Name="WORKINGHOURSE" ColumnName="WORKINGHOURSE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUSHISETS">
+      <EntityTypeMapping TypeName="praktika1_datasetModel.SUSHISETS">
+        <MappingFragment StoreEntitySet="SUSHISETS">
+          <ScalarProperty Name="ID_SUSHISETS" ColumnName="ID_SUSHISETS" />
+          <ScalarProperty Name="TITLESETS" ColumnName="TITLESETS" />
+          <ScalarProperty Name="PRICESETS" ColumnName="PRICESETS" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

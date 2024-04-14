@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище praktika1_datasetModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CLIENTS">
+          <Key>
+            <PropertyRef Name="ID_CLIENTS" />
+          </Key>
+          <Property Name="ID_CLIENTS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIRST_NAME" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="MIDDLENAME" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="SURNAME" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="INFOBARS">
+          <Key>
+            <PropertyRef Name="ID_INFOBARS" />
+          </Key>
+          <Property Name="ID_INFOBARS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SUSHIBARS_ID" Type="int" Nullable="false" />
+          <Property Name="SUSHISETS_ID" Type="int" Nullable="false" />
+          <Property Name="CLIENTS_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SUSHIBARS">
+          <Key>
+            <PropertyRef Name="ID_SUSHIBARS" />
+          </Key>
+          <Property Name="ID_SUSHIBARS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITLE" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="WORKINGHOURSE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SUSHISETS">
+          <Key>
+            <PropertyRef Name="ID_SUSHISETS" />
+          </Key>
+          <Property Name="ID_SUSHISETS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITLESETS" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="PRICESETS" Type="int" Nullable="false" />
+          <Property Name="QUANTITY" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__INFOBARS__CLIENT__5629CD9C">
+          <End Role="CLIENTS" Type="Self.CLIENTS" Multiplicity="1" />
+          <End Role="INFOBARS" Type="Self.INFOBARS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTS">
+              <PropertyRef Name="ID_CLIENTS" />
+            </Principal>
+            <Dependent Role="INFOBARS">
+              <PropertyRef Name="CLIENTS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INFOBARS__SUSHIB__5441852A">
+          <End Role="SUSHIBARS" Type="Self.SUSHIBARS" Multiplicity="1" />
+          <End Role="INFOBARS" Type="Self.INFOBARS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUSHIBARS">
+              <PropertyRef Name="ID_SUSHIBARS" />
+            </Principal>
+            <Dependent Role="INFOBARS">
+              <PropertyRef Name="SUSHIBARS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INFOBARS__SUSHIS__5535A963">
+          <End Role="SUSHISETS" Type="Self.SUSHISETS" Multiplicity="1" />
+          <End Role="INFOBARS" Type="Self.INFOBARS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUSHISETS">
+              <PropertyRef Name="ID_SUSHISETS" />
+            </Principal>
+            <Dependent Role="INFOBARS">
+              <PropertyRef Name="SUSHISETS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище praktika1_datasetModelContainer">
+          <EntitySet Name="CLIENTS" EntityType="Self.CLIENTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INFOBARS" EntityType="Self.INFOBARS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SUSHIBARS" EntityType="Self.SUSHIBARS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SUSHISETS" EntityType="Self.SUSHISETS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__INFOBARS__CLIENT__5629CD9C" Association="Self.FK__INFOBARS__CLIENT__5629CD9C">
+            <End Role="CLIENTS" EntitySet="CLIENTS" />
+            <End Role="INFOBARS" EntitySet="INFOBARS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INFOBARS__SUSHIB__5441852A" Association="Self.FK__INFOBARS__SUSHIB__5441852A">
+            <End Role="SUSHIBARS" EntitySet="SUSHIBARS" />
+            <End Role="INFOBARS" EntitySet="INFOBARS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INFOBARS__SUSHIS__5535A963" Association="Self.FK__INFOBARS__SUSHIS__5535A963">
+            <End Role="SUSHISETS" EntitySet="SUSHISETS" />
+            <End Role="INFOBARS" EntitySet="INFOBARS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="praktika1_datasetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CLIENTS">
+          <Key>
+            <PropertyRef Name="ID_CLIENTS" />
+          </Key>
+          <Property Name="ID_CLIENTS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIRST_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MIDDLENAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SURNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="INFOBARS" Relationship="Self.FK__INFOBARS__CLIENT__5629CD9C" FromRole="CLIENTS" ToRole="INFOBARS" />
+        </EntityType>
+        <EntityType Name="INFOBARS">
+          <Key>
+            <PropertyRef Name="ID_INFOBARS" />
+          </Key>
+          <Property Name="ID_INFOBARS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SUSHIBARS_ID" Type="Int32" Nullable="false" />
+          <Property Name="SUSHISETS_ID" Type="Int32" Nullable="false" />
+          <Property Name="CLIENTS_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CLIENTS" Relationship="Self.FK__INFOBARS__CLIENT__5629CD9C" FromRole="INFOBARS" ToRole="CLIENTS" />
+          <NavigationProperty Name="SUSHIBARS" Relationship="Self.FK__INFOBARS__SUSHIB__5441852A" FromRole="INFOBARS" ToRole="SUSHIBARS" />
+          <NavigationProperty Name="SUSHISETS" Relationship="Self.FK__INFOBARS__SUSHIS__5535A963" FromRole="INFOBARS" ToRole="SUSHISETS" />
+        </EntityType>
+        <EntityType Name="SUSHIBARS">
+          <Key>
+            <PropertyRef Name="ID_SUSHIBARS" />
+          </Key>
+          <Property Name="ID_SUSHIBARS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WORKINGHOURSE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="INFOBARS" Relationship="Self.FK__INFOBARS__SUSHIB__5441852A" FromRole="SUSHIBARS" ToRole="INFOBARS" />
+        </EntityType>
+        <EntityType Name="SUSHISETS">
+          <Key>
+            <PropertyRef Name="ID_SUSHISETS" />
+          </Key>
+          <Property Name="ID_SUSHISETS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLESETS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRICESETS" Type="Int32" Nullable="false" />
+          <Property Name="QUANTITY" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="INFOBARS" Relationship="Self.FK__INFOBARS__SUSHIS__5535A963" FromRole="SUSHISETS" ToRole="INFOBARS" />
+        </EntityType>
+        <Association Name="FK__INFOBARS__CLIENT__5629CD9C">
+          <End Role="CLIENTS" Type="Self.CLIENTS" Multiplicity="1" />
+          <End Role="INFOBARS" Type="Self.INFOBARS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTS">
+              <PropertyRef Name="ID_CLIENTS" />
+            </Principal>
+            <Dependent Role="INFOBARS">
+              <PropertyRef Name="CLIENTS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INFOBARS__SUSHIB__5441852A">
+          <End Role="SUSHIBARS" Type="Self.SUSHIBARS" Multiplicity="1" />
+          <End Role="INFOBARS" Type="Self.INFOBARS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUSHIBARS">
+              <PropertyRef Name="ID_SUSHIBARS" />
+            </Principal>
+            <Dependent Role="INFOBARS">
+              <PropertyRef Name="SUSHIBARS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INFOBARS__SUSHIS__5535A963">
+          <End Role="SUSHISETS" Type="Self.SUSHISETS" Multiplicity="1" />
+          <End Role="INFOBARS" Type="Self.INFOBARS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SUSHISETS">
+              <PropertyRef Name="ID_SUSHISETS" />
+            </Principal>
+            <Dependent Role="INFOBARS">
+              <PropertyRef Name="SUSHISETS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="praktika1_datasetEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CLIENTS" EntityType="Self.CLIENTS" />
+          <EntitySet Name="INFOBARS" EntityType="Self.INFOBARS" />
+          <EntitySet Name="SUSHIBARS" EntityType="Self.SUSHIBARS" />
+          <EntitySet Name="SUSHISETS" EntityType="Self.SUSHISETS" />
+          <AssociationSet Name="FK__INFOBARS__CLIENT__5629CD9C" Association="Self.FK__INFOBARS__CLIENT__5629CD9C">
+            <End Role="CLIENTS" EntitySet="CLIENTS" />
+            <End Role="INFOBARS" EntitySet="INFOBARS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INFOBARS__SUSHIB__5441852A" Association="Self.FK__INFOBARS__SUSHIB__5441852A">
+            <End Role="SUSHIBARS" EntitySet="SUSHIBARS" />
+            <End Role="INFOBARS" EntitySet="INFOBARS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INFOBARS__SUSHIS__5535A963" Association="Self.FK__INFOBARS__SUSHIS__5535A963">
+            <End Role="SUSHISETS" EntitySet="SUSHISETS" />
+            <End Role="INFOBARS" EntitySet="INFOBARS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище praktika1_datasetModelContainer" CdmEntityContainer="praktika1_datasetEntities">
+          <EntitySetMapping Name="CLIENTS">
+            <EntityTypeMapping TypeName="praktika1_datasetModel.CLIENTS">
+              <MappingFragment StoreEntitySet="CLIENTS">
+                <ScalarProperty Name="ID_CLIENTS" ColumnName="ID_CLIENTS" />
+                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+                <ScalarProperty Name="MIDDLENAME" ColumnName="MIDDLENAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INFOBARS">
+            <EntityTypeMapping TypeName="praktika1_datasetModel.INFOBARS">
+              <MappingFragment StoreEntitySet="INFOBARS">
+                <ScalarProperty Name="ID_INFOBARS" ColumnName="ID_INFOBARS" />
+                <ScalarProperty Name="SUSHIBARS_ID" ColumnName="SUSHIBARS_ID" />
+                <ScalarProperty Name="SUSHISETS_ID" ColumnName="SUSHISETS_ID" />
+                <ScalarProperty Name="CLIENTS_ID" ColumnName="CLIENTS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUSHIBARS">
+            <EntityTypeMapping TypeName="praktika1_datasetModel.SUSHIBARS">
+              <MappingFragment StoreEntitySet="SUSHIBARS">
+                <ScalarProperty Name="ID_SUSHIBARS" ColumnName="ID_SUSHIBARS" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="WORKINGHOURSE" ColumnName="WORKINGHOURSE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUSHISETS">
+            <EntityTypeMapping TypeName="praktika1_datasetModel.SUSHISETS">
+              <MappingFragment StoreEntitySet="SUSHISETS">
+                <ScalarProperty Name="ID_SUSHISETS" ColumnName="ID_SUSHISETS" />
+                <ScalarProperty Name="TITLESETS" ColumnName="TITLESETS" />
+                <ScalarProperty Name="PRICESETS" ColumnName="PRICESETS" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
